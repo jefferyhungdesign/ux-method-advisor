@@ -6,10 +6,10 @@
   "homepage": "https://ux-method-advisor.vercel.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jefferyux/ux-method-advisor.git"
+    "url": "https://github.com/jefferyhungdesign/ux-method-advisor.git"
   },
   "bugs": {
-    "url": "https://github.com/jefferyux/ux-method-advisor/issues"
+    "url": "https://github.com/jefferyhungdesign/ux-method-advisor/issues"
   },
   "license": "MIT",
   "bin": {
