@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UX Method Advisor — 65 UX Methods for AI Tools</title>
+<meta name="description" content="Install 65 UX methods with real case studies into Claude Code, Cursor, Windsurf. One command. Bilingual EN/繁中.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --paper: #f5f0e8;
+  --accent: #e85d26;
+  --accent2: #2d6a4f;
+  --muted: #7a7068;
+  --border: #d4cec4;
+  --code: #1a1a2e;
+  --code-bg: #eee8dc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+  font-size: 0.85rem; color: var(--muted);
+  text-decoration: none; transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-gh {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--border); border-radius: 6px;
+  font-size: 0.8rem !important; color: var(--ink) !important;
+  transition: border-color 0.15s !important;
+}
+.nav-gh:hover { border-color: var(--ink) !important; }
+
+/* HERO */
+.hero {
+  max-width: 860px; margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+@media (max-width: 700px) { .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2.5rem; } }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem; color: var(--accent2);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+}
+h1 em { font-style: italic; color: var(--accent); }
+
+.hero-desc {
+  color: var(--muted); font-size: 1rem;
+  line-height: 1.7; margin-bottom: 2rem;
+}
+
+.install-card {
+  background: var(--ink); border-radius: 12px;
+  padding: 1.6rem;
+  cursor: pointer;
+}
+.install-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; color: #7a7a9a;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.install-cmd {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.05rem; color: #f5f0e8;
+  margin-bottom: 1.2rem;
+}
+.install-cmd .dollar { color: #4ade80; }
+.install-cmd .cmd { color: #93c5fd; }
+.copy-row { display: flex; gap: 0.6rem; }
+.copy-btn {
+  flex: 1; padding: 0.6rem 1rem;
+  background: #e85d26;
+  border: none; border-radius: 7px;
+  color: white; font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: opacity 0.15s;
+}
+.copy-btn:hover { opacity: 0.9; }
+.install-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; color: #5a5a7a; margin-top: 0.7rem;
+}
+
+/* STATS */
+.stats-row {
+  display: flex; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap;
+}
+.stat-n {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem; font-weight: 700; color: var(--accent);
+  line-height: 1;
+}
+.stat-l { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+
+/* DIVIDER */
+.divider {
+  border: none; border-top: 1px solid var(--border);
+  margin: 0 2.5rem;
+}
+
+/* SKILLS SECTION */
+.section { max-width: 860px; margin: 0 auto; padding: 4rem 2rem; }
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem; color: var(--accent2);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden;
+}
+@media (max-width: 600px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+
+.skill-card {
+  background: var(--paper);
+  padding: 1.6rem 1.4rem;
+  transition: background 0.15s;
+}
+.skill-card:hover { background: #ede7db; }
+.skill-slash {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem; color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.skill-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.skill-cn { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.7rem; }
+.skill-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.3rem; color: var(--ink); font-weight: 500;
+}
+.skill-count small { font-size: 0.65rem; color: var(--muted); }
+.skill-card.featured { background: var(--ink); }
+.skill-card.featured:hover { background: #252540; }
+.skill-card.featured .skill-slash { color: #93c5fd; }
+.skill-card.featured .skill-name { color: var(--paper); }
+.skill-card.featured .skill-cn { color: #7a7a9a; }
+.skill-card.featured .skill-count { color: var(--paper); }
+.skill-card.featured .skill-count small { color: #7a7a9a; }
+
+/* STEPS */
+.steps-grid { display: grid; gap: 2rem; }
+.step { display: grid; grid-template-columns: 2.8rem 1fr; gap: 1.2rem; }
+.step-num {
+  width: 2.8rem; height: 2.8rem;
+  border: 1.5px solid var(--border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 0.82rem;
+  color: var(--accent); flex-shrink: 0;
+}
+.step-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.step-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem 1.2rem; margin-top: 0.8rem;
+  font-family: 'DM Mono', monospace; font-size: 0.78rem;
+  line-height: 1.9; overflow-x: auto;
+}
+.code-block .g { color: var(--accent2); }
+.code-block .b { color: #2563eb; }
+.code-block .c { color: var(--muted); }
+.code-block .o { color: var(--accent); }
+
+/* TOOLS */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.8rem; margin-top: 2rem;
+}
+.tool {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 1.1rem; text-align: center;
+  transition: border-color 0.15s;
+}
+.tool:hover { border-color: var(--ink); }
+.tool-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+.tool-name { font-size: 0.82rem; font-weight: 600; }
+.tool-flag { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); margin-top: 0.2rem; }
+
+/* EXAMPLES */
+.examples { display: grid; gap: 1rem; margin-top: 2rem; }
+.example {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+}
+.ex-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; color: var(--accent2);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.ex-text { font-size: 0.92rem; color: var(--ink); line-height: 1.5; }
+.ex-result { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.8rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-left {
+  font-family: 'Fraunces', serif;
+  font-size: 0.95rem; font-weight: 700; color: var(--ink);
+}
+.footer-left span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">UX<span>.</span>Method</a>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#install">Install</a>
+    <a href="#usage">Usage</a>
+    <a href="https://github.com/jefferyux/ux-method-advisor" class="nav-gh" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-tag"><span class="tag-dot"></span> Claude Code · Cursor · Windsurf</div>
+    <h1>65 UX Methods for <em>AI-Assisted</em> Design</h1>
+    <p class="hero-desc">Install a complete UX method library into your AI tools. 每個方法附真實公司案例，一鍵安裝。</p>
+    <div class="stats-row">
+      <div><div class="stat-n">65</div><div class="stat-l">Methods</div></div>
+      <div><div class="stat-n">6</div><div class="stat-l">Skills</div></div>
+      <div><div class="stat-n">65</div><div class="stat-l">Case Studies</div></div>
+      <div><div class="stat-n">2</div><div class="stat-l">Languages</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="install-card" onclick="copyCmd()">
+      <div class="install-label">// install · 安裝</div>
+      <div class="install-cmd"><span class="dollar">$</span> <span class="cmd">npx ux-method-advisor</span></div>
+      <div class="copy-row">
+        <button class="copy-btn" id="copy-btn">Copy Command</button>
+      </div>
+      <div class="install-note">No npm install needed · Works offline · Node 16+</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-eyebrow">// 6 skills · 6 個技能</div>
+  <h2 class="section-title">One command installs everything</h2>
+  <div class="skills-grid">
+    <div class="skill-card featured">
+      <div class="skill-slash">/ux-method-advisor</div>
+      <div class="skill-name">UX Method Advisor</div>
+      <div class="skill-cn">全包 · 自動推薦</div>
+      <div class="skill-count">65 <small>methods</small></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-slash">/discover</div>
+      <div class="skill-name">Discover</div>
+      <div class="skill-cn">探索階段</div>
+      <div class="skill-count">17 <small>methods</small></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-slash">/define</div>
+      <div class="skill-name">Define</div>
+      <div class="skill-cn">定義階段</div>
+      <div class="skill-count">21 <small>methods</small></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-slash">/ideate</div>
+      <div class="skill-name">Ideate</div>
+      <div class="skill-cn">發想階段</div>
+      <div class="skill-count">13 <small>methods</small></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-slash">/execute</div>
+      <div class="skill-name">Execute</div>
+      <div class="skill-cn">執行階段</div>
+      <div class="skill-count">7 <small>methods</small></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-slash">/validate</div>
+      <div class="skill-name">Validate</div>
+      <div class="skill-cn">驗證階段</div>
+      <div class="skill-count">7 <small>methods</small></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INSTALL STEPS -->
+<section class="section" id="install">
+  <div class="section-eyebrow">// getting started · 開始使用</div>
+  <h2 class="section-title">3 steps to install</h2>
+  <div class="steps-grid">
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Run the installer</div>
+        <div class="step-desc">One command. Auto-detects your AI tool. No configuration needed.</div>
+        <div class="code-block">
+<span class="c"># Auto-detect</span>
+<span class="g">$</span> <span class="b">npx ux-method-advisor</span>
+
+<span class="c"># For specific tools</span>
+<span class="g">$</span> <span class="b">npx ux-method-advisor</span> --tool claude-code
+<span class="g">$</span> <span class="b">npx ux-method-advisor</span> --tool cursor
+<span class="g">$</span> <span class="b">npx ux-method-advisor</span> --tool windsurf
+
+<span class="c"># Force update</span>
+<span class="g">$</span> <span class="b">npx ux-method-advisor</span> -f
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Files installed automatically</div>
+        <div class="step-desc">6 skill folders are created in your project directory.</div>
+        <div class="code-block">
+.agents/skills/
+├── <span class="o">ux-method-advisor</span>/   ← All 65 methods
+├── <span class="b">discover</span>/            ← 17 methods
+├── <span class="b">define</span>/              ← 21 methods
+├── <span class="b">ideate</span>/              ← 13 methods
+├── <span class="b">execute</span>/             ← 7 methods
+└── <span class="b">validate</span>/            ← 7 methods
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">Ask your AI naturally</div>
+        <div class="step-desc">Skills trigger automatically. No special syntax needed.</div>
+        <div class="code-block">
+<span class="c"># Natural language</span>
+<span class="o">"我接了一個 revamp project，該怎麼做？"</span>
+
+<span class="c"># Slash command</span>
+<span class="o">"/define 怎樣做用戶訪談？"</span>
+
+<span class="c"># English</span>
+<span class="o">"How do I run a Design Sprint?"</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLS -->
+<section class="section">
+  <div class="section-eyebrow">// compatibility · 相容性</div>
+  <h2 class="section-title">Works with 6 AI tools</h2>
+  <div class="tools-grid">
+    <div class="tool"><div class="tool-icon">🤖</div><div class="tool-name">Claude Code</div><div class="tool-flag">--tool claude-code</div></div>
+    <div class="tool"><div class="tool-icon">⚡</div><div class="tool-name">Cursor</div><div class="tool-flag">--tool cursor</div></div>
+    <div class="tool"><div class="tool-icon">🌊</div><div class="tool-name">Windsurf</div><div class="tool-flag">--tool windsurf</div></div>
+    <div class="tool"><div class="tool-icon">▶</div><div class="tool-name">Continue</div><div class="tool-flag">--tool continue</div></div>
+    <div class="tool"><div class="tool-icon">🔧</div><div class="tool-name">Cline</div><div class="tool-flag">--tool cline</div></div>
+    <div class="tool"><div class="tool-icon">💻</div><div class="tool-name">Aider</div><div class="tool-flag">--tool aider</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- USAGE -->
+<section class="section" id="usage">
+  <div class="section-eyebrow">// examples · 示例</div>
+  <h2 class="section-title">Ask anything UX-related</h2>
+  <div class="examples">
+    <div class="example">
+      <div class="ex-label">Stage Guidance · 階段指引</div>
+      <div class="ex-text">「我現在在 Define 階段，整理完訪談筆記了，下一步應該怎麼做？」</div>
+      <div class="ex-result">→ Recommends Affinity Mapping + Empathy Map + Personas with step-by-step guide</div>
+    </div>
+    <div class="example">
+      <div class="ex-label">Problem-based · 問題導向</div>
+      <div class="ex-text">「我要了解用戶為何在結帳頁流失，應該用什麼方法？」</div>
+      <div class="ex-result">→ Funnel Analysis + Session Recordings + User Interview · with Dropbox & PayPal case studies</div>
+    </div>
+    <div class="example">
+      <div class="ex-label">Method Deep-dive · 方法詳解</div>
+      <div class="ex-text">"How do I run a Design Sprint? What happens on each day?"</div>
+      <div class="ex-result">→ Full 5-day breakdown + Blue Bottle Coffee real case study</div>
+    </div>
+    <div class="example">
+      <div class="ex-label">Stakeholder Pitch · 說服管理層</div>
+      <div class="ex-text">「我要向管理層說明為什麼要做用戶研究，有什麼方法？」</div>
+      <div class="ex-result">→ ROI framework + IBM Design Thinking case: $100 return per $1 invested</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">UX<span>.</span>Method</div>
+  <div class="footer-links">
+    <a href="https://github.com/jefferyux/ux-method-advisor" target="_blank">GitHub</a>
+    <a href="https://www.npmjs.com/package/ux-method-advisor" target="_blank">npm</a>
+    <a href="https://github.com/jefferyux/ux-method-advisor/issues" target="_blank">Issues</a>
+  </div>
+</footer>
+
+<script>
+function copyCmd() {
+  navigator.clipboard.writeText('npx ux-method-advisor').then(() => {
+    const btn = document.getElementById('copy-btn');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.style.background = '#2d6a4f';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "ux-method-advisor",
+  "version": "1.0.0",
+  "description": "Install 6 UX skills (65 methods) into Claude Code, Cursor, Windsurf and more. Bilingual EN/繁中.",
+  "keywords": ["ux", "design", "research", "claude", "skill", "agent", "design-thinking", "user-research"],
+  "homepage": "https://ux-method-advisor.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jefferyux/ux-method-advisor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jefferyux/ux-method-advisor/issues"
+  },
+  "license": "MIT",
+  "bin": {
+    "ux-method-advisor": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
