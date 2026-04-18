@@ -1,8 +1,17 @@
 {
   "name": "ux-method-advisor",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Install a workflow-first UX method advisor plus 5 stage skills into Claude Code, Cursor, Windsurf and more. Bilingual EN/繁中.",
-  "keywords": ["ux", "design", "research", "claude", "skill", "agent", "design-thinking", "user-research"],
+  "keywords": [
+    "ux",
+    "design",
+    "research",
+    "claude",
+    "skill",
+    "agent",
+    "design-thinking",
+    "user-research"
+  ],
   "homepage": "https://ux-method-advisor.vercel.app",
   "repository": {
     "type": "git",
