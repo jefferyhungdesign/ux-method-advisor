@@ -1,7 +1,7 @@
 # UX Method Advisor
 
-> Install 6 UX skills (65 methods) into Claude Code, Cursor, Windsurf and more.  
-> 一鍵安裝 6 個 UX Skills（65 個方法）到你的 AI 工具。
+> Install a workflow-first UX method advisor plus 5 stage skills into Claude Code, Cursor, Windsurf and more.  
+> 一鍵安裝 1 個方法決策 skill + 5 個階段技能，到你的 AI 工具。
 
 ## Install / 安裝
 
@@ -27,14 +27,20 @@ npx ux-method-advisor --list-tools           # List supported tools
 
 | Skill | Command | Methods |
 |-------|---------|---------|
-| UX Method Advisor | `/ux-method-advisor` | Auto-recommend 自動推薦 |
+| UX Method Advisor | `/ux-method-advisor` | Decision layer 方法決策 |
 | Discover | `/discover` | 17 methods |
 | Define | `/define` | 21 methods |
 | Ideate | `/ideate` | 13 methods |
 | Execute | `/execute` | 7 methods |
 | Validate | `/validate` | 7 methods |
 
-Each method includes / 每個方法包含：
+`/ux-method-advisor` does not just list methods. It:
+- identifies stage / 判斷階段
+- recommends a primary method, backup, and fallback / 推薦主方案、備選與 fallback
+- adapts to time, research access, prototype readiness, and traffic / 根據時間、資源、prototype、流量作判斷
+- moves directly into the next deliverable / 直接推進下一步產出
+
+Each stage skill still includes / 每個階段 skill 仍然包含：
 - When to use / 幾時用
 - Step-by-step guide / 執行步驟
 - Real case study / 真實案例（Airbnb, Spotify, Google, Netflix, Apple, IBM...）
@@ -42,10 +48,11 @@ Each method includes / 每個方法包含：
 ## Usage / 使用
 
 ```
-"我接了一個 revamp project，該怎麼做？"
+"我接了一個 revamp project，現在應該先做什麼方法？"
+"/ux-method-advisor 我想了解用戶為什麼在 checkout 流失"
 "/define 怎樣做用戶訪談？"
 "/validate 如何測試我的設計？"
-"What is Affinity Mapping? How do I run it?"
+"What UX method should I use if I only have 3 days and no user access?"
 ```
 
 ## License
